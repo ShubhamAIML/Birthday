@@ -23,6 +23,7 @@
             justify-content: center;
             padding: 20px;
             position: relative;
+            padding-bottom: 120px; /* Space for sticky player */
         }
 
         /* Floating hearts */
@@ -114,130 +115,172 @@
             text-transform: uppercase;
         }
 
-        /* Simple Music Player Section */
-        .music-player {
-            background: linear-gradient(145deg, 
-                rgba(255, 255, 255, 0.9), 
-                rgba(102, 126, 234, 0.1));
-            padding: 30px;
-            border-radius: 25px;
-            margin: 30px 0;
-            border: 2px solid rgba(102, 126, 234, 0.3);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
-        }
-
-        .music-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            color: #667eea;
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
-
-        .player-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-
-        .play-pause-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border: none;
-            color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .play-pause-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
-        }
-
-        .volume-control {
+        /* AMAZING STICKY MUSIC PLAYER AT BOTTOM RIGHT */
+        .sticky-music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            animation: musicGradientShift 8s ease infinite;
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: 
+                0 15px 35px rgba(255, 107, 107, 0.4),
+                0 0 0 2px rgba(255, 255, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
             display: flex;
             align-items: center;
             gap: 15px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            z-index: 10000;
+            width: 380px;
+            max-width: calc(100vw - 40px);
+            backdrop-filter: blur(25px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transform: translateX(300px);
+            animation: slideInPlayer 1.5s ease-out 2s forwards, musicGradientShift 8s ease infinite 2s;
         }
 
-        .volume-icon {
-            font-size: 1.2rem;
-            color: #667eea;
+        .music-cake-icon {
+            font-size: 2.2rem;
+            animation: cakeRotate 4s ease-in-out infinite;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            user-select: none;
         }
 
-        .volume-slider {
-            width: 120px;
+        .player-controls-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .play-pause-btn-sticky {
+            background: rgba(255, 255, 255, 0.25);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .play-pause-btn-sticky:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-pause-btn-sticky:active {
+            transform: scale(0.95);
+        }
+
+        .volume-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .volume-icon-sticky {
+            font-size: 1.1rem;
+            user-select: none;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        .volume-slider-sticky {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 90px;
             height: 6px;
             border-radius: 5px;
-            background: rgba(102, 126, 234, 0.3);
-            outline: none;
+            background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
-            -webkit-appearance: none;
+            transition: all 0.3s ease;
         }
 
-        .volume-slider::-webkit-slider-thumb {
+        .volume-slider-sticky::-webkit-slider-thumb {
             -webkit-appearance: none;
+            appearance: none;
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            background: #667eea;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
             cursor: pointer;
-            box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .volume-slider::-moz-range-thumb {
+        .volume-slider-sticky::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .volume-slider-sticky::-moz-range-thumb {
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            background: #667eea;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
             cursor: pointer;
             border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .progress-container {
-            width: 100%;
-            max-width: 400px;
-            margin: 20px auto;
-            background: rgba(102, 126, 234, 0.2);
+        .progress-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 10px;
+        }
+
+        .progress-container-sticky {
+            flex: 1;
             height: 8px;
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
             cursor: pointer;
             overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
-        .progress-bar {
+        .progress-bar-sticky {
             height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
             width: 0%;
+            background: linear-gradient(90deg, #fff, #ffd700, #ff69b4);
+            border-radius: 6px;
             transition: width 0.1s ease;
-            border-radius: 5px;
+            position: relative;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
-        .time-display {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-size: 0.95rem;
-            color: #666;
+        .progress-bar-sticky::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 12px;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent);
+            border-radius: 6px;
+        }
+
+        .time-display-sticky {
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: right;
+            user-select: none;
             font-weight: 500;
-        }
-
-        .now-playing {
-            font-weight: 600;
-            color: #667eea;
-            margin-top: 15px;
-            font-size: 1.1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         /* Poem section */
@@ -369,12 +412,38 @@
             font-weight: 600;
         }
 
-        /* Animations */
+        /* Amazing Animations */
         @keyframes gradientShift {
             0%, 100% { background-position: 0% 50%; }
             25% { background-position: 100% 25%; }
             50% { background-position: 50% 100%; }
             75% { background-position: 25% 0%; }
+        }
+
+        @keyframes musicGradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 25%; }
+            50% { background-position: 50% 100%; }
+            75% { background-position: 25% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes slideInPlayer {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes cakeRotate {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-5deg) scale(1.1); }
+            50% { transform: rotate(0deg) scale(1.05); }
+            75% { transform: rotate(5deg) scale(1.1); }
         }
 
         @keyframes cardAppear {
@@ -427,23 +496,31 @@
             100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
         }
 
-        /* Responsive design */
+        /* Perfect responsive design */
         @media (max-width: 768px) {
-            body { padding: 15px; }
+            body { padding: 15px; padding-bottom: 100px; }
             .birthday-card { padding: 35px 25px; border-radius: 25px; }
             .poem-section { padding: 30px 20px; }
-            .music-player { padding: 25px 15px; }
-            .player-controls { flex-direction: column; gap: 20px; }
             .actions { flex-direction: column; align-items: center; }
             .action-btn { width: 100%; max-width: 280px; }
             .poem-text { text-align: center; }
+            .sticky-music-player { 
+                width: calc(100vw - 20px); 
+                right: 10px; 
+                bottom: 10px;
+                padding: 12px 15px;
+                border-radius: 35px;
+            }
+            .progress-section { margin: 0 5px; }
         }
 
         @media (max-width: 480px) {
             .birthday-card { padding: 30px 20px; }
             .age-badge { top: -15px; right: 20px; }
-            .volume-slider { width: 100px; }
-            .play-pause-btn { width: 60px; height: 60px; font-size: 1.5rem; }
+            .volume-slider-sticky { width: 70px; }
+            .music-cake-icon { font-size: 1.8rem; }
+            .play-pause-btn-sticky { width: 45px; height: 45px; font-size: 1.4rem; }
+            .sticky-music-player { padding: 10px 12px; }
         }
     </style>
 </head>
@@ -460,6 +537,30 @@
         Your browser does not support the audio element.
     </audio>
 
+    <!-- AMAZING STICKY MUSIC PLAYER -->
+    <div class="sticky-music-player">
+        <div class="music-cake-icon">🎂</div>
+        
+        <div class="player-controls-section">
+            <button class="play-pause-btn-sticky" id="playPauseBtnSticky" onclick="togglePlayPause()">
+                ▶️
+            </button>
+            
+            <div class="volume-section">
+                <span class="volume-icon-sticky">🔊</span>
+                <input type="range" class="volume-slider-sticky" id="volumeSliderSticky" 
+                       min="0" max="100" value="70" onchange="adjustVolume()">
+            </div>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-container-sticky" onclick="setProgressSticky(event)">
+                <div class="progress-bar-sticky" id="progressBarSticky"></div>
+            </div>
+            <div class="time-display-sticky" id="timeDisplaySticky">0:00</div>
+        </div>
+    </div>
+
     <!-- Main birthday card -->
     <div class="birthday-card">
         <!-- Age badge -->
@@ -471,39 +572,6 @@
             <h2 class="name">Kanchan Ji</h2>
             <div class="date-container">
                 <div class="date-text">✨ August 8th, 2025 ✨</div>
-            </div>
-        </div>
-
-        <!-- Simple Music Player Section -->
-        <div class="music-player">
-            <h3 class="music-title">🎵 Your Special Birthday Song 🎵</h3>
-
-            <!-- Player Controls -->
-            <div class="player-controls">
-                <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlayPause()">
-                    ▶️
-                </button>
-                
-                <div class="volume-control">
-                    <span class="volume-icon">🔊</span>
-                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70" onchange="adjustVolume()">
-                </div>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="progress-container" onclick="setProgress(event)">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-
-            <!-- Time Display -->
-            <div class="time-display">
-                <span id="currentTime">0:00</span>
-                <span id="duration">0:00</span>
-            </div>
-
-            <!-- Now Playing -->
-            <div class="now-playing" id="nowPlaying">
-                🎵 Click play to start your birthday song!
             </div>
         </div>
 
@@ -551,26 +619,24 @@
     </div>
 
     <script>
-        // Simple audio player for single MP3
+        // Amazing sticky music player functionality
         const audio = document.getElementById('birthdaySong');
         let isPlaying = false;
 
         // Toggle play/pause
         function togglePlayPause() {
-            const playPauseBtn = document.getElementById('playPauseBtn');
+            const playPauseBtn = document.getElementById('playPauseBtnSticky');
             
             if (isPlaying) {
                 audio.pause();
                 playPauseBtn.textContent = '▶️';
                 isPlaying = false;
-                document.getElementById('nowPlaying').textContent = '🎵 Song paused - Click to resume';
                 showMessage('⏸️ Music paused');
             } else {
                 audio.play().then(() => {
                     playPauseBtn.textContent = '⏸️';
                     isPlaying = true;
-                    document.getElementById('nowPlaying').textContent = '🎵 Now playing your special birthday song!';
-                    showMessage('🎵 Playing your birthday song!');
+                    showMessage('🎵 Playing your special birthday song!');
                 }).catch(error => {
                     console.log('Playback failed:', error);
                     showMessage('❌ Could not play the song. Please check if the MP3 file is in the audio folder.');
@@ -580,12 +646,12 @@
 
         // Adjust volume
         function adjustVolume() {
-            const volume = document.getElementById('volumeSlider').value / 100;
+            const volume = document.getElementById('volumeSliderSticky').value / 100;
             audio.volume = volume;
         }
 
-        // Set progress by clicking on progress bar
-        function setProgress(event) {
+        // Set progress by clicking on progress bar (sticky version)
+        function setProgressSticky(event) {
             const progressContainer = event.currentTarget;
             const clickPosition = event.offsetX;
             const containerWidth = progressContainer.offsetWidth;
@@ -597,18 +663,16 @@
             }
         }
 
-        // Update progress bar
-        function updateProgress() {
-            const progressBar = document.getElementById('progressBar');
-            const currentTimeSpan = document.getElementById('currentTime');
-            const durationSpan = document.getElementById('duration');
+        // Update progress bar (sticky version)
+        function updateProgressSticky() {
+            const progressBar = document.getElementById('progressBarSticky');
+            const timeDisplay = document.getElementById('timeDisplaySticky');
             
             if (audio.duration) {
                 const progressPercent = (audio.currentTime / audio.duration) * 100;
                 progressBar.style.width = progressPercent + '%';
                 
-                currentTimeSpan.textContent = formatTime(audio.currentTime);
-                durationSpan.textContent = formatTime(audio.duration);
+                timeDisplay.textContent = formatTime(audio.currentTime) + '/' + formatTime(audio.duration);
             }
         }
 
@@ -674,18 +738,17 @@
             setTimeout(() => messageDiv.remove(), 4000);
         }
 
-        // Audio event listeners
-        audio.addEventListener('timeupdate', updateProgress);
+        // Audio event listeners for sticky player
+        audio.addEventListener('timeupdate', updateProgressSticky);
         
         audio.addEventListener('ended', () => {
-            document.getElementById('playPauseBtn').textContent = '▶️';
+            document.getElementById('playPauseBtnSticky').textContent = '▶️';
             isPlaying = false;
-            document.getElementById('nowPlaying').textContent = '🎵 Song finished! Click to play again';
-            showMessage('🎵 Song finished!');
+            showMessage('🎵 Song finished! Click to play again');
         });
 
         audio.addEventListener('loadedmetadata', () => {
-            document.getElementById('duration').textContent = formatTime(audio.duration);
+            updateProgressSticky();
         });
 
         // Initialize volume
@@ -694,7 +757,7 @@
         // Welcome message
         window.addEventListener('load', () => {
             setTimeout(() => {
-                showMessage("🌟 Welcome to Kanchan Ji's Musical Birthday Celebration! Click play to hear your song! 💜🎵");
+                showMessage("🌟 Welcome to Kanchan Ji's Musical Birthday Celebration! Check out the music player! 💜🎵");
             }, 1800);
         });
     </script>
