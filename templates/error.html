@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Birthday Card</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            color: white;
+            text-align: center;
+        }
+        .error-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        h1 { font-size: 2rem; margin-bottom: 20px; }
+        p { font-size: 1.1rem; margin-bottom: 30px; }
+        a { color: #FFD700; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>💜 Oops! Something went wrong</h1>
+        <p>{{ error_message }}</p>
+        <a href="/">🏠 Go back to Kanchan Ji's Birthday Card</a>
+    </div>
+</body>
+</html>

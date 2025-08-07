@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 31st Birthday Kanchan Ji 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Great+Vibes&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 300% 300%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Floating hearts */
+        .floating-heart {
+            position: fixed;
+            color: rgba(118, 75, 162, 0.4);
+            font-size: 1.5rem;
+            animation: gentleFloat 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .heart-1 { top: 15%; left: 10%; animation-delay: 0s; }
+        .heart-2 { top: 25%; right: 15%; animation-delay: 3s; }
+        .heart-3 { bottom: 20%; left: 20%; animation-delay: 6s; }
+        .heart-4 { top: 60%; right: 25%; animation-delay: 9s; }
+
+        /* Main card */
+        .birthday-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 35px;
+            padding: clamp(40px, 6vw, 80px);
+            max-width: 850px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 
+                0 25px 70px rgba(102, 126, 234, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            position: relative;
+            animation: cardAppear 1.8s ease-out;
+        }
+
+        /* Age badge */
+        .age-badge {
+            position: absolute;
+            top: -20px;
+            right: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            width: clamp(60px, 8vw, 80px);
+            height: clamp(60px, 8vw, 80px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            animation: gentleBounce 3s ease-in-out infinite;
+        }
+
+        /* Typography */
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 6vw, 5rem);
+            background: linear-gradient(135deg, #667eea, #f093fb, #f5576c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            animation: titleGlow 4s ease-in-out infinite alternate;
+        }
+
+        .name {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #764ba2;
+            margin-bottom: 25px;
+            font-weight: 700;
+            animation: nameFloat 5s ease-in-out infinite;
+        }
+
+        .date-container {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(240, 147, 251, 0.15));
+            padding: 18px 35px;
+            border-radius: 30px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            display: inline-block;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .date-text {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: #764ba2;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Simple Music Player Section */
+        .music-player {
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.9), 
+                rgba(102, 126, 234, 0.1));
+            padding: 30px;
+            border-radius: 25px;
+            margin: 30px 0;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
+        }
+
+        .music-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: #667eea;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .play-pause-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-pause-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .volume-icon {
+            font-size: 1.2rem;
+            color: #667eea;
+        }
+
+        .volume-slider {
+            width: 120px;
+            height: 6px;
+            border-radius: 5px;
+            background: rgba(102, 126, 234, 0.3);
+            outline: none;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            background: rgba(102, 126, 234, 0.2);
+            height: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.1s ease;
+            border-radius: 5px;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .now-playing {
+            font-weight: 600;
+            color: #667eea;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Poem section */
+        .poem-section {
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.8), 
+                rgba(102, 126, 234, 0.08));
+            padding: 45px;
+            border-radius: 25px;
+            margin: 40px 0;
+            border-left: 6px solid #667eea;
+            position: relative;
+            animation: contentFadeIn 2.5s ease-out;
+            backdrop-filter: blur(15px);
+        }
+
+        .poem-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: #667eea;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .poem-text {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+            line-height: 2;
+            color: #444;
+            text-align: left;
+        }
+
+        .poem-line {
+            margin-bottom: 12px;
+            opacity: 0;
+            animation: lineAppear 1s ease-out forwards;
+            padding-left: 20px;
+            position: relative;
+            font-style: italic;
+        }
+
+        .poem-line::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            color: #f093fb;
+            font-size: 1rem;
+        }
+
+        .poem-line:nth-child(1) { animation-delay: 0.5s; }
+        .poem-line:nth-child(2) { animation-delay: 0.8s; }
+        .poem-line:nth-child(3) { animation-delay: 1.1s; }
+        .poem-line:nth-child(4) { animation-delay: 1.4s; }
+        .poem-line:nth-child(5) { animation-delay: 1.7s; }
+        .poem-line:nth-child(6) { animation-delay: 2s; }
+        .poem-line:nth-child(7) { animation-delay: 2.3s; }
+        .poem-line:nth-child(8) { animation-delay: 2.6s; }
+
+        /* Wish section */
+        .wish-section {
+            background: linear-gradient(135deg, 
+                rgba(240, 147, 251, 0.12), 
+                rgba(245, 87, 108, 0.12));
+            padding: 35px;
+            border-radius: 25px;
+            margin: 35px 0;
+            border: 2px dashed rgba(102, 126, 234, 0.3);
+        }
+
+        .wish-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.5rem, 2.8vw, 2rem);
+            color: #667eea;
+            margin-bottom: 25px;
+        }
+
+        .wish-text {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.8;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* Action buttons */
+        .actions {
+            margin-top: 45px;
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 45px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .footer-text {
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            color: #666;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .footer-highlight {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 25%; }
+            50% { background-position: 50% 100%; }
+            75% { background-position: 25% 0%; }
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+                filter: blur(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px); opacity: 0.4; }
+            50% { transform: translateY(-20px); opacity: 0.7; }
+        }
+
+        @keyframes gentleBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        @keyframes titleGlow {
+            0% { filter: brightness(1) drop-shadow(0 0 10px rgba(102, 126, 234, 0.3)); }
+            100% { filter: brightness(1.1) drop-shadow(0 0 15px rgba(240, 147, 251, 0.4)); }
+        }
+
+        @keyframes nameFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes contentFadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes lineAppear {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes messageShow {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            20% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+            80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .birthday-card { padding: 35px 25px; border-radius: 25px; }
+            .poem-section { padding: 30px 20px; }
+            .music-player { padding: 25px 15px; }
+            .player-controls { flex-direction: column; gap: 20px; }
+            .actions { flex-direction: column; align-items: center; }
+            .action-btn { width: 100%; max-width: 280px; }
+            .poem-text { text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .birthday-card { padding: 30px 20px; }
+            .age-badge { top: -15px; right: 20px; }
+            .volume-slider { width: 100px; }
+            .play-pause-btn { width: 60px; height: 60px; font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts -->
+    <div class="floating-heart heart-1">💜</div>
+    <div class="floating-heart heart-2">💙</div>
+    <div class="floating-heart heart-3">💖</div>
+    <div class="floating-heart heart-4">💫</div>
+
+    <!-- Hidden audio element for your song -->
+    <audio id="birthdaySong" preload="metadata">
+        <source src="{{ url_for('static', filename='audio/birthday_song.mp3') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Main birthday card -->
+    <div class="birthday-card">
+        <!-- Age badge -->
+        <div class="age-badge">31</div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title">Happy Birthday</h1>
+            <h2 class="name">Kanchan Ji</h2>
+            <div class="date-container">
+                <div class="date-text">✨ August 8th, 2025 ✨</div>
+            </div>
+        </div>
+
+        <!-- Simple Music Player Section -->
+        <div class="music-player">
+            <h3 class="music-title">🎵 Your Special Birthday Song 🎵</h3>
+
+            <!-- Player Controls -->
+            <div class="player-controls">
+                <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlayPause()">
+                    ▶️
+                </button>
+                
+                <div class="volume-control">
+                    <span class="volume-icon">🔊</span>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70" onchange="adjustVolume()">
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container" onclick="setProgress(event)">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <!-- Time Display -->
+            <div class="time-display">
+                <span id="currentTime">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+
+            <!-- Now Playing -->
+            <div class="now-playing" id="nowPlaying">
+                🎵 Click play to start your birthday song!
+            </div>
+        </div>
+
+        <!-- Poem Section -->
+        <div class="poem-section">
+            <h3 class="poem-title">💜 A Golden Symphony for Kanchan Ji 💜</h3>
+            <div class="poem-text">
+                <div class="poem-line">On this blessed August eighth, when stars align so bright,</div>
+                <div class="poem-line">We celebrate dear Kanchan Ji, our beacon of pure light.</div>
+                <div class="poem-line">Your name whispers golden tales of beauty, grace, and more,</div>
+                <div class="poem-line">Like precious treasure from the earth, you're what we all adore.</div>
+                <div class="poem-line">Thirty-one candles dance today, each flame a memory sweet,</div>
+                <div class="poem-line">Of laughter shared, of love you've spread, making life complete.</div>
+                <div class="poem-line">May this new year paint your world in hues of joy and bliss,</div>
+                <div class="poem-line">For someone as wonderful as you deserves nothing less than this! 🌟</div>
+            </div>
+        </div>
+
+        <!-- Wish Section -->
+        <div class="wish-section">
+            <h3 class="wish-title">🌟 Heartfelt Birthday Wish 🌟</h3>
+            <p class="wish-text" id="wishText">
+                As you celebrate another beautiful year of life, may your heart be filled with boundless joy, 
+                your dreams take flight on wings of hope, and every moment ahead shimmer with the magic you bring to this world. 
+                You are a rare gem, Kanchan Ji, and today we celebrate the incredible gift of your presence in our lives! 
+                Here's to a year overflowing with love, laughter, and limitless possibilities! 💜✨
+            </p>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+            <button class="action-btn" onclick="newWish()">
+                ✨ New Blessing
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="footer-text">
+                Crafted with 💜 infinite love and ✨ magical blessings ✨ for our extraordinary 
+                <span class="footer-highlight">Kanchan Ji</span><br>
+                <small>May this <strong>31st year</strong> be filled with wonder, wisdom, and endless wonder! 🌟</small>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Simple audio player for single MP3
+        const audio = document.getElementById('birthdaySong');
+        let isPlaying = false;
+
+        // Toggle play/pause
+        function togglePlayPause() {
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            
+            if (isPlaying) {
+                audio.pause();
+                playPauseBtn.textContent = '▶️';
+                isPlaying = false;
+                document.getElementById('nowPlaying').textContent = '🎵 Song paused - Click to resume';
+                showMessage('⏸️ Music paused');
+            } else {
+                audio.play().then(() => {
+                    playPauseBtn.textContent = '⏸️';
+                    isPlaying = true;
+                    document.getElementById('nowPlaying').textContent = '🎵 Now playing your special birthday song!';
+                    showMessage('🎵 Playing your birthday song!');
+                }).catch(error => {
+                    console.log('Playback failed:', error);
+                    showMessage('❌ Could not play the song. Please check if the MP3 file is in the audio folder.');
+                });
+            }
+        }
+
+        // Adjust volume
+        function adjustVolume() {
+            const volume = document.getElementById('volumeSlider').value / 100;
+            audio.volume = volume;
+        }
+
+        // Set progress by clicking on progress bar
+        function setProgress(event) {
+            const progressContainer = event.currentTarget;
+            const clickPosition = event.offsetX;
+            const containerWidth = progressContainer.offsetWidth;
+            const duration = audio.duration;
+            
+            if (duration) {
+                const newTime = (clickPosition / containerWidth) * duration;
+                audio.currentTime = newTime;
+            }
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeSpan = document.getElementById('currentTime');
+            const durationSpan = document.getElementById('duration');
+            
+            if (audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = progressPercent + '%';
+                
+                currentTimeSpan.textContent = formatTime(audio.currentTime);
+                durationSpan.textContent = formatTime(audio.duration);
+            }
+        }
+
+        // Format time display
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Enhanced wish function
+        function newWish() {
+            const superWishes = [
+                "🌟 May your 31st year be a masterpiece painted with golden sunrises, silver moonlight, and rainbow dreams that all come true, dear Kanchan Ji! 💜",
+                "✨ Like a butterfly emerging from its cocoon, may this year transform every hope into reality and every dream into a beautiful journey of joy! 🦋",
+                "🌸 May your path be adorned with flowers of happiness, your heart filled with melodies of laughter, and your soul blessed with peace! 🎵",
+                "💫 Here's to 365 days of magical moments, where every sunrise brings new possibilities and every sunset whispers gratitude! 🌅",
+                "🌺 May the universe conspire to shower you with blessings as abundant as stars in the sky and as precious as your golden heart! ⭐",
+                "🦄 Wishing you a year where miracles become everyday occurrences and where your light continues to illuminate the world! 💖"
+            ];
+
+            const wishText = document.getElementById('wishText');
+            const randomWish = superWishes[Math.floor(Math.random() * superWishes.length)];
+            
+            wishText.style.opacity = '0.3';
+            wishText.style.transform = 'translateY(15px)';
+            
+            setTimeout(() => {
+                wishText.textContent = randomWish;
+                wishText.style.opacity = '1';
+                wishText.style.transform = 'translateY(0)';
+            }, 400);
+
+            showMessage("💜 A magical new blessing has been bestowed upon you! ✨");
+        }
+
+        // Show message function
+        function showMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = message;
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 15%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+                background-size: 200% 200%;
+                animation: gradientShift 3s ease infinite, messageShow 4s ease-out forwards;
+                color: white;
+                padding: 15px 30px;
+                border-radius: 25px;
+                font-size: clamp(0.9rem, 2vw, 1.1rem);
+                font-weight: 500;
+                z-index: 1000;
+                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+                text-align: center;
+                max-width: 90vw;
+                backdrop-filter: blur(15px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            `;
+            
+            document.body.appendChild(messageDiv);
+            setTimeout(() => messageDiv.remove(), 4000);
+        }
+
+        // Audio event listeners
+        audio.addEventListener('timeupdate', updateProgress);
+        
+        audio.addEventListener('ended', () => {
+            document.getElementById('playPauseBtn').textContent = '▶️';
+            isPlaying = false;
+            document.getElementById('nowPlaying').textContent = '🎵 Song finished! Click to play again';
+            showMessage('🎵 Song finished!');
+        });
+
+        audio.addEventListener('loadedmetadata', () => {
+            document.getElementById('duration').textContent = formatTime(audio.duration);
+        });
+
+        // Initialize volume
+        adjustVolume();
+
+        // Welcome message
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showMessage("🌟 Welcome to Kanchan Ji's Musical Birthday Celebration! Click play to hear your song! 💜🎵");
+            }, 1800);
+        });
+    </script>
+</body>
+</html>
