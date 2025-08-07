@@ -23,10 +23,10 @@
             justify-content: center;
             padding: 20px;
             position: relative;
-            padding-bottom: 120px; /* Space for sticky player */
+            padding-bottom: 120px;
         }
 
-        /* Floating hearts */
+        /* Enhanced Floating hearts */
         .floating-heart {
             position: fixed;
             color: rgba(118, 75, 162, 0.4);
@@ -115,7 +115,46 @@
             text-transform: uppercase;
         }
 
-        /* AMAZING STICKY MUSIC PLAYER AT BOTTOM RIGHT */
+        /* ENHANCED MEGA CELEBRATION BUTTON */
+        .mega-celebration-btn {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            animation: celebrationGradient 3s ease infinite;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 35px;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 8px 25px rgba(255, 107, 107, 0.4),
+                0 0 0 2px rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mega-celebration-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 2s infinite;
+        }
+
+        .mega-celebration-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+        }
+
+        /* STICKY MUSIC PLAYER */
         .sticky-music-player {
             position: fixed;
             bottom: 20px;
@@ -180,57 +219,28 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .play-pause-btn-sticky:active {
-            transform: scale(0.95);
-        }
-
         .volume-section {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .volume-icon-sticky {
-            font-size: 1.1rem;
-            user-select: none;
-            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
-        }
-
         .volume-slider-sticky {
             -webkit-appearance: none;
-            appearance: none;
             width: 90px;
             height: 6px;
             border-radius: 5px;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
         .volume-slider-sticky::-webkit-slider-thumb {
             -webkit-appearance: none;
-            appearance: none;
             width: 18px;
             height: 18px;
             border-radius: 50%;
             background: linear-gradient(135deg, #fff, #f0f0f0);
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .volume-slider-sticky::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
-        }
-
-        .volume-slider-sticky::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #fff, #f0f0f0);
-            cursor: pointer;
-            border: none;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
@@ -259,26 +269,13 @@
             background: linear-gradient(90deg, #fff, #ffd700, #ff69b4);
             border-radius: 6px;
             transition: width 0.1s ease;
-            position: relative;
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-
-        .progress-bar-sticky::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 12px;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent);
-            border-radius: 6px;
         }
 
         .time-display-sticky {
             font-size: 0.8rem;
             min-width: 45px;
             text-align: right;
-            user-select: none;
             font-weight: 500;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
@@ -364,7 +361,7 @@
             font-style: italic;
         }
 
-        /* Action buttons */
+        /* Actions */
         .actions {
             margin-top: 45px;
             display: flex;
@@ -412,7 +409,123 @@
             font-weight: 600;
         }
 
-        /* Amazing Animations */
+        /* AMAZING NEW ANIMATION EFFECTS */
+
+        /* Confetti animation */
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Firework burst animation */
+        @keyframes fireworkBurst {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(3) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sparkle animation */
+        @keyframes sparkleShine {
+            0%, 100% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.5) rotate(180deg);
+                opacity: 1;
+            }
+        }
+
+        /* Balloon float animation */
+        @keyframes balloonFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            25% {
+                transform: translateY(75vh) translateX(-20px) rotate(-5deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(50vh) translateX(10px) rotate(5deg);
+                opacity: 0.9;
+            }
+            75% {
+                transform: translateY(25vh) translateX(-10px) rotate(-3deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-20vh) translateX(5px) rotate(0deg);
+                opacity: 0;
+            }
+        }
+
+        /* Heart rain animation */
+        @keyframes heartRain {
+            0% {
+                transform: translateY(-50px) scale(0);
+                opacity: 0;
+            }
+            10% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            90% {
+                transform: translateY(100vh) scale(0.8);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(110vh) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Screen shake animation */
+        @keyframes screenShake {
+            0%, 100% { transform: translateX(0); }
+            10% { transform: translateX(-10px); }
+            20% { transform: translateX(10px); }
+            30% { transform: translateX(-10px); }
+            40% { transform: translateX(10px); }
+            50% { transform: translateX(-10px); }
+            60% { transform: translateX(10px); }
+            70% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+            90% { transform: translateX(-10px); }
+        }
+
+        /* Screen glow animation */
+        @keyframes screenGlow {
+            0% {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+                filter: brightness(1);
+            }
+            50% {
+                background: linear-gradient(135deg, #ff6b6b 0%, #ffd700 25%, #ff69b4 50%, #00ced1 75%, #98fb98 100%);
+                filter: brightness(1.5) saturate(1.3);
+            }
+            100% {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+                filter: brightness(1);
+            }
+        }
+
+        /* Enhanced existing animations */
         @keyframes gradientShift {
             0%, 100% { background-position: 0% 50%; }
             25% { background-position: 100% 25%; }
@@ -426,6 +539,17 @@
             50% { background-position: 50% 100%; }
             75% { background-position: 25% 0%; }
             100% { background-position: 0% 50%; }
+        }
+
+        @keyframes celebrationGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
 
         @keyframes slideInPlayer {
@@ -502,7 +626,7 @@
             .birthday-card { padding: 35px 25px; border-radius: 25px; }
             .poem-section { padding: 30px 20px; }
             .actions { flex-direction: column; align-items: center; }
-            .action-btn { width: 100%; max-width: 280px; }
+            .action-btn, .mega-celebration-btn { width: 100%; max-width: 280px; }
             .poem-text { text-align: center; }
             .sticky-music-player { 
                 width: calc(100vw - 20px); 
@@ -511,7 +635,6 @@
                 padding: 12px 15px;
                 border-radius: 35px;
             }
-            .progress-section { margin: 0 5px; }
         }
 
         @media (max-width: 480px) {
@@ -525,13 +648,13 @@
     </style>
 </head>
 <body>
-    <!-- Floating hearts -->
+    <!-- Enhanced floating hearts -->
     <div class="floating-heart heart-1">💜</div>
     <div class="floating-heart heart-2">💙</div>
     <div class="floating-heart heart-3">💖</div>
     <div class="floating-heart heart-4">💫</div>
 
-    <!-- Hidden audio element for your song -->
+    <!-- Hidden audio element -->
     <audio id="birthdaySong" preload="metadata">
         <source src="{{ url_for('static', filename='audio/birthday_song.mp3') }}" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -547,7 +670,7 @@
             </button>
             
             <div class="volume-section">
-                <span class="volume-icon-sticky">🔊</span>
+                <span style="font-size: 1.1rem;">🔊</span>
                 <input type="range" class="volume-slider-sticky" id="volumeSliderSticky" 
                        min="0" max="100" value="70" onchange="adjustVolume()">
             </div>
@@ -601,10 +724,13 @@
             </p>
         </div>
 
-        <!-- Actions -->
+        <!-- Enhanced Actions with MEGA CELEBRATION -->
         <div class="actions">
             <button class="action-btn" onclick="newWish()">
                 ✨ New Blessing
+            </button>
+            <button class="mega-celebration-btn" onclick="megaCelebration()">
+                🎊 MEGA CELEBRATION! 🎊
             </button>
         </div>
 
@@ -619,9 +745,10 @@
     </div>
 
     <script>
-        // Amazing sticky music player functionality
+        // Enhanced music player functionality
         const audio = document.getElementById('birthdaySong');
         let isPlaying = false;
+        let celebrationLevel = 0;
 
         // Toggle play/pause
         function togglePlayPause() {
@@ -650,7 +777,7 @@
             audio.volume = volume;
         }
 
-        // Set progress by clicking on progress bar (sticky version)
+        // Set progress
         function setProgressSticky(event) {
             const progressContainer = event.currentTarget;
             const clickPosition = event.offsetX;
@@ -663,7 +790,7 @@
             }
         }
 
-        // Update progress bar (sticky version)
+        // Update progress bar
         function updateProgressSticky() {
             const progressBar = document.getElementById('progressBarSticky');
             const timeDisplay = document.getElementById('timeDisplaySticky');
@@ -676,11 +803,203 @@
             }
         }
 
-        // Format time display
+        // Format time
         function formatTime(seconds) {
             const minutes = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // 🎉 MEGA CELEBRATION FUNCTION WITH AMAZING EFFECTS! 🎉
+        function megaCelebration() {
+            celebrationLevel++;
+            
+            // Screen shake and glow
+            document.body.style.animation = 'screenShake 1s ease-in-out, screenGlow 3s ease-in-out';
+            setTimeout(() => {
+                document.body.style.animation = 'gradientShift 15s ease infinite';
+            }, 3000);
+
+            // Multiple celebration effects based on level
+            switch(celebrationLevel) {
+                case 1:
+                    showMessage('🎉 LEVEL 1 MEGA CELEBRATION! 🎉');
+                    createConfettiBurst(80);
+                    createSparkles(30);
+                    break;
+                case 2:
+                    showMessage('🚀 LEVEL 2 SUPER CELEBRATION! 🚀');
+                    createConfettiBurst(120);
+                    createFireworks(6);
+                    createHeartRain(25);
+                    break;
+                case 3:
+                    showMessage('💥 LEVEL 3 ULTIMATE CELEBRATION! 💥');
+                    createConfettiBurst(150);
+                    createFireworks(10);
+                    createSparkles(50);
+                    createBalloonFloat(15);
+                    createHeartRain(40);
+                    break;
+                default:
+                    showMessage('🌟💫✨ LEGENDARY CELEBRATION! MAXIMUM PARTY MODE! ✨💫🌟');
+                    createConfettiBurst(200);
+                    createFireworks(15);
+                    createSparkles(70);
+                    createBalloonFloat(25);
+                    createHeartRain(60);
+                    createGoldenSparkles(30);
+                    celebrationLevel = 0; // Reset for next cycle
+            }
+        }
+
+        // 🎊 CREATE CONFETTI BURST
+        function createConfettiBurst(count) {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffd93d', '#ff69b4', '#9d4edd', '#06ffa5'];
+            const shapes = ['●', '■', '▲', '♦', '★', '💖', '🎉', '✨'];
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                    confetti.style.cssText = `
+                        position: fixed;
+                        left: ${Math.random() * 100}vw;
+                        top: -20px;
+                        color: ${colors[Math.floor(Math.random() * colors.length)]};
+                        font-size: ${Math.random() * 20 + 15}px;
+                        pointer-events: none;
+                        z-index: 9999;
+                        animation: confettiFall ${Math.random() * 4 + 3}s linear forwards;
+                    `;
+                    
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 7000);
+                }, i * 50);
+            }
+        }
+
+        // 🎆 CREATE FIREWORKS
+        function createFireworks(count) {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#ffd93d', '#ff69b4', '#9d4edd'];
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.textContent = '✨';
+                    firework.style.cssText = `
+                        position: fixed;
+                        left: ${Math.random() * 80 + 10}vw;
+                        top: ${Math.random() * 40 + 10}vh;
+                        color: ${colors[Math.floor(Math.random() * colors.length)]};
+                        font-size: 3rem;
+                        pointer-events: none;
+                        z-index: 9999;
+                        animation: fireworkBurst 2s ease-out forwards;
+                        filter: drop-shadow(0 0 10px currentColor);
+                    `;
+                    
+                    document.body.appendChild(firework);
+                    setTimeout(() => firework.remove(), 2000);
+                }, i * 300);
+            }
+        }
+
+        // ✨ CREATE SPARKLES
+        function createSparkles(count) {
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.textContent = '✨';
+                    sparkle.style.cssText = `
+                        position: fixed;
+                        left: ${Math.random() * 100}vw;
+                        top: ${Math.random() * 100}vh;
+                        font-size: ${Math.random() * 15 + 10}px;
+                        pointer-events: none;
+                        z-index: 9999;
+                        animation: sparkleShine 1.5s ease-in-out forwards;
+                        color: gold;
+                        filter: drop-shadow(0 0 5px gold);
+                    `;
+                    
+                    document.body.appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 1500);
+                }, i * 100);
+            }
+        }
+
+        // 🎈 CREATE BALLOON FLOAT
+        function createBalloonFloat(count) {
+            const balloons = ['🎈', '🎈', '🎈', '🎈', '🎈'];
+            const colors = ['red', 'blue', 'yellow', 'green', 'pink'];
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const balloon = document.createElement('div');
+                    balloon.textContent = balloons[Math.floor(Math.random() * balloons.length)];
+                    balloon.style.cssText = `
+                        position: fixed;
+                        left: ${Math.random() * 100}vw;
+                        bottom: -50px;
+                        font-size: ${Math.random() * 20 + 25}px;
+                        pointer-events: none;
+                        z-index: 9999;
+                        animation: balloonFloat ${Math.random() * 3 + 5}s ease-out forwards;
+                        filter: hue-rotate(${Math.random() * 360}deg);
+                    `;
+                    
+                    document.body.appendChild(balloon);
+                    setTimeout(() => balloon.remove(), 8000);
+                }, i * 200);
+            }
+        }
+
+        // 💖 CREATE HEART RAIN
+        function createHeartRain(count) {
+            const hearts = ['💖', '💕', '💗', '💓', '💝', '❤️', '🧡', '💛', '💚', '💙', '💜'];
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.cssText = `
+                        position: fixed;
+                        left: ${Math.random() * 100}vw;
+                        top: -30px;
+                        font-size: ${Math.random() * 15 + 20}px;
+                        pointer-events: none;
+                        z-index: 9999;
+                        animation: heartRain ${Math.random() * 2 + 4}s ease-in-out forwards;
+                    `;
+                    
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 6000);
+                }, i * 150);
+            }
+        }
+
+        // 🌟 CREATE GOLDEN SPARKLES
+        function createGoldenSparkles(count) {
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.textContent = '🌟';
+                    sparkle.style.cssText = `
+                        position: fixed;
+                        left: ${Math.random() * 100}vw;
+                        top: ${Math.random() * 100}vh;
+                        font-size: ${Math.random() * 20 + 15}px;
+                        pointer-events: none;
+                        z-index: 9999;
+                        animation: sparkleShine 2s ease-in-out forwards;
+                        filter: drop-shadow(0 0 8px gold);
+                    `;
+                    
+                    document.body.appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 2000);
+                }, i * 80);
+            }
         }
 
         // Enhanced wish function
@@ -691,7 +1010,9 @@
                 "🌸 May your path be adorned with flowers of happiness, your heart filled with melodies of laughter, and your soul blessed with peace! 🎵",
                 "💫 Here's to 365 days of magical moments, where every sunrise brings new possibilities and every sunset whispers gratitude! 🌅",
                 "🌺 May the universe conspire to shower you with blessings as abundant as stars in the sky and as precious as your golden heart! ⭐",
-                "🦄 Wishing you a year where miracles become everyday occurrences and where your light continues to illuminate the world! 💖"
+                "🦄 Wishing you a year where miracles become everyday occurrences and where your light continues to illuminate the world! 💖",
+                "🎂 May this special day mark the beginning of a year filled with golden opportunities, platinum dreams, and diamond moments! 💎",
+                "🌈 Here's to a year that sparkles with adventure, glows with love, and shines with all the success you deserve! ✨"
             ];
 
             const wishText = document.getElementById('wishText');
@@ -704,47 +1025,56 @@
                 wishText.textContent = randomWish;
                 wishText.style.opacity = '1';
                 wishText.style.transform = 'translateY(0)';
+                
+                // Add sparkle effect around the wish
+                createSparkles(10);
             }, 400);
 
             showMessage("💜 A magical new blessing has been bestowed upon you! ✨");
         }
 
-        // Show message function
+        // Enhanced message function
         function showMessage(message) {
             const messageDiv = document.createElement('div');
             messageDiv.textContent = message;
             messageDiv.style.cssText = `
                 position: fixed;
-                top: 15%;
+                top: 12%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
                 background-size: 200% 200%;
-                animation: gradientShift 3s ease infinite, messageShow 4s ease-out forwards;
+                animation: gradientShift 3s ease infinite, messageShow 5s ease-out forwards;
                 color: white;
-                padding: 15px 30px;
-                border-radius: 25px;
-                font-size: clamp(0.9rem, 2vw, 1.1rem);
-                font-weight: 500;
-                z-index: 1000;
-                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+                padding: 20px 40px;
+                border-radius: 30px;
+                font-size: clamp(1rem, 2.2vw, 1.3rem);
+                font-weight: 600;
+                z-index: 10001;
+                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
                 text-align: center;
                 max-width: 90vw;
-                backdrop-filter: blur(15px);
-                border: 1px solid rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(20px);
+                border: 2px solid rgba(255, 255, 255, 0.3);
             `;
             
             document.body.appendChild(messageDiv);
-            setTimeout(() => messageDiv.remove(), 4000);
+            setTimeout(() => messageDiv.remove(), 5000);
         }
 
-        // Audio event listeners for sticky player
+        // Audio event listeners
         audio.addEventListener('timeupdate', updateProgressSticky);
         
         audio.addEventListener('ended', () => {
             document.getElementById('playPauseBtnSticky').textContent = '▶️';
             isPlaying = false;
             showMessage('🎵 Song finished! Click to play again');
+            
+            // Auto celebration when song ends
+            setTimeout(() => {
+                createSparkles(20);
+                showMessage('🎉 Thank you for listening to your special song! 🎉');
+            }, 1000);
         });
 
         audio.addEventListener('loadedmetadata', () => {
@@ -754,11 +1084,38 @@
         // Initialize volume
         adjustVolume();
 
-        // Welcome message
+        // Enhanced welcome message with automatic sparkles
         window.addEventListener('load', () => {
             setTimeout(() => {
-                showMessage("🌟 Welcome to Kanchan Ji's Musical Birthday Celebration! Check out the music player! 💜🎵");
+                showMessage("🌟 Welcome to Kanchan Ji's MEGA Musical Birthday Celebration! 💜🎵");
+                createSparkles(15);
             }, 1800);
+            
+            // Auto sparkles every 15 seconds
+            setInterval(() => {
+                if (Math.random() < 0.3) {
+                    createSparkles(5);
+                }
+            }, 15000);
+        });
+
+        // Add keyboard shortcuts for celebration
+        document.addEventListener('keydown', (event) => {
+            switch(event.key.toLowerCase()) {
+                case ' ': // Spacebar
+                    event.preventDefault();
+                    megaCelebration();
+                    break;
+                case 'c': // C key
+                    createConfettiBurst(50);
+                    break;
+                case 'f': // F key
+                    createFireworks(3);
+                    break;
+                case 's': // S key
+                    createSparkles(20);
+                    break;
+            }
         });
     </script>
 </body>
